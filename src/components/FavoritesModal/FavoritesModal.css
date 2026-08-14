@@ -1,0 +1,99 @@
+.favorites-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  animation: favFadeIn 0.2s ease;
+}
+
+.favorites-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-modal);
+  width: 100%;
+  max-width: 980px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  animation: favScaleUp 0.25s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.favorites-modal__close {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  z-index: 5;
+  transition: background 0.2s;
+}
+
+.favorites-modal__close:hover { background: var(--color-bg-alt); }
+
+.favorites-modal__header {
+  text-align: center;
+  padding: 26px 20px 14px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.favorites-modal__header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-heart);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.favorites-modal__header p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.favorites-modal__body {
+  overflow-y: auto;
+  padding: 24px 32px 40px;
+  flex: 1;
+}
+
+.favorites-modal__empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.favorites-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 20px;
+}
+
+.favorites-modal__grid .product-card { width: 100%; }
+
+@keyframes favFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes favScaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 767px) {
+  .favorites-modal { max-height: 90vh; }
+  .favorites-modal__body { padding: 20px 18px 32px; }
+  .favorites-modal__grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+}

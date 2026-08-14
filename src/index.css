@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #FDF8F0;
+  --color-surface: #FFFFFF;
+  --color-bg-alt: #F5EDE0;
+  --color-primary: #8B6914;
+  --color-primary-dark: #6E5310;
+  --color-accent: #C4913A;
+  --color-text: #2D2418;
+  --color-text-secondary: #6B5D4F;
+  --color-heart: #E25D5D;
+  --color-promo-bg: #FFF8E7;
+  --color-border: #E9DFCC;
+
+  --radius-card: 10px;
+  --radius-pill: 9999px;
+  --radius-modal: 16px;
+
+  --container-width: 1200px;
+  --header-height: 72px;
+  --shadow-sm: 0 2px 8px rgba(45, 36, 24, 0.06);
+  --shadow-md: 0 8px 24px rgba(45, 36, 24, 0.12);
+  --shadow-lg: 0 16px 40px rgba(45, 36, 24, 0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-gap { margin-top: 72px; }
+
+@media (max-width: 767px) {
+  .section-gap { margin-top: 48px; }
+}

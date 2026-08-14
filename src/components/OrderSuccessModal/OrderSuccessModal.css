@@ -1,0 +1,112 @@
+.success-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.success-modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-modal);
+  width: 100%;
+  max-width: 400px;
+  padding: 36px 28px 28px;
+  text-align: center;
+  animation: scaleUp 0.3s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+  box-shadow: var(--shadow-lg);
+}
+
+.success-modal__icon {
+  color: #4CAF50;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+  animation: checkPop 0.5s ease;
+}
+
+.success-modal h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.success-modal__subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 22px;
+}
+
+.success-modal__order-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.success-modal__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  padding: 5px 0;
+}
+
+.success-modal__order-number {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  letter-spacing: 0.3px;
+}
+
+.success-modal__total {
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.success-modal__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.success-modal__secondary,
+.success-modal__primary {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.success-modal__secondary {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+.success-modal__secondary:hover { opacity: 0.85; }
+
+.success-modal__primary {
+  background: var(--color-primary-dark);
+  color: white;
+}
+
+.success-modal__primary:hover { background: var(--color-primary); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes checkPop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}

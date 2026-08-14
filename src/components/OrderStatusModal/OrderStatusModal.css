@@ -1,0 +1,154 @@
+.status-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.status-modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-modal);
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 28px 26px;
+  position: relative;
+  animation: scaleUp 0.25s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.status-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-modal__back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  padding: 6px 10px 6px 8px;
+  border-radius: var(--radius-pill);
+  transition: background 0.2s;
+}
+
+.status-modal__back:hover { background: var(--color-bg-alt); }
+
+.status-modal__header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.status-modal__header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.status-modal__header p {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.status-modal__steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-step {
+  display: flex;
+  gap: 14px;
+}
+
+.status-step__line-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-step__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.status-step__icon--active {
+  background: var(--color-primary-dark);
+  color: white;
+}
+
+.status-step__icon--pulse {
+  animation: statusPulse 1.4s ease-in-out infinite;
+}
+
+.status-step__line {
+  width: 2px;
+  flex: 1;
+  min-height: 30px;
+  background: var(--color-border);
+  transition: background 0.4s ease;
+}
+
+.status-step__line--active { background: var(--color-primary-dark); }
+
+.status-step__text { padding-bottom: 26px; padding-top: 6px; }
+
+.status-step__label {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.status-step__label--active { color: var(--color-text); font-weight: 600; }
+
+.status-step__now {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+}
+
+.status-step__now--done { color: #4CAF50; }
+
+.status-modal__footer {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 105, 20, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(139, 105, 20, 0); }
+}

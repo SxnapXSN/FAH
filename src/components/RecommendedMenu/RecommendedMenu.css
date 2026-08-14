@@ -1,0 +1,76 @@
+.recommended__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.recommended__header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-heart);
+}
+
+.recommended__view-all {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.recommended__carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.recommended__arrow {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-dark);
+  transition: background 0.2s;
+}
+
+.recommended__arrow:hover { background: var(--color-bg-alt); }
+
+.recommended__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 2px 14px;
+  flex: 1;
+  scrollbar-width: thin;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.recommended__track--dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.recommended__track--dragging * {
+  pointer-events: none;
+}
+
+.recommended__empty {
+  padding: 40px 0;
+  color: var(--color-text-secondary);
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .recommended__arrow { display: none; }
+}

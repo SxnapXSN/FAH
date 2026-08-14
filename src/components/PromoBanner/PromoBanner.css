@@ -1,0 +1,41 @@
+.promo__box {
+  background: var(--color-promo-bg);
+  border: 1.5px dashed var(--color-accent);
+  border-radius: var(--radius-card);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.promo__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--color-primary-dark);
+}
+
+.promo__title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.promo__date {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.promo__cta {
+  background: var(--color-primary-dark);
+  color: white;
+  padding: 12px 30px;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.promo__cta:hover { background: var(--color-primary); }
