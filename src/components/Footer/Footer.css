@@ -1,5 +1,9 @@
 .footer {
-  background: var(--color-bg-alt);
+  background:
+    linear-gradient(180deg, rgba(245, 237, 224, 0.72), rgba(255, 243, 214, 0.88)),
+    radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: auto, 22px 22px;
+  border-top: 1px solid rgba(139, 105, 20, 0.14);
   padding-top: 48px;
 }
 

@@ -1,11 +1,13 @@
 .hero {
-  background: var(--color-bg-alt);
-  background-image: radial-gradient(var(--color-accent) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: -10px -10px;
-  padding: 56px 0 40px;
+  background:
+    linear-gradient(135deg, rgba(255, 243, 214, 0.92), rgba(245, 237, 224, 0.70)),
+    radial-gradient(var(--color-accent) 1px, transparent 1px);
+  background-size: auto, 22px 22px;
+  background-position: 0 0, -10px -10px;
+  padding: 28px 0 34px;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid rgba(139, 105, 20, 0.13);
 }
 
 .hero__viewport {
@@ -33,7 +35,14 @@
   display: flex;
   align-items: center;
   gap: 48px;
-  min-height: 280px;
+  min-height: 420px;
+  padding: 40px clamp(24px, 4vw, 72px);
+  border: 1px solid rgba(139, 105, 20, 0.16);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.86), rgba(255, 248, 231, 0.66)),
+    linear-gradient(90deg, rgba(217, 107, 130, 0.12), rgba(141, 191, 159, 0.10));
+  box-shadow: var(--shadow-md);
 }
 
 .hero__image {
@@ -44,15 +53,17 @@
 
 .hero__image-circle {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: clamp(240px, 24vw, 340px);
+  height: clamp(240px, 24vw, 340px);
   border-radius: 50%;
-  background: var(--color-surface);
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.95), rgba(255, 243, 214, 0.92) 58%, rgba(245, 237, 224, 0.95));
+  border: 1px solid rgba(139, 105, 20, 0.14);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 8rem;
+  font-size: clamp(7rem, 9vw, 10rem);
 }
 
 .hero__price-tag {
@@ -72,7 +83,7 @@
 .hero__content { flex: 1; }
 
 .hero__title {
-  font-size: 3.25rem;
+  font-size: clamp(2.7rem, 4.3vw, 4.8rem);
   font-weight: 700;
   color: var(--color-primary-dark);
   line-height: 1.15;
@@ -80,9 +91,10 @@
 }
 
 .hero__subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   color: var(--color-text-secondary);
   margin-bottom: 28px;
+  max-width: 58ch;
 }
 
 .hero__cta {
@@ -153,7 +165,14 @@
 }
 
 @media (max-width: 767px) {
-  .hero__inner { flex-direction: column; text-align: center; gap: 24px; }
+  .hero { padding: 18px 0 28px; }
+  .hero__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    min-height: auto;
+    padding: 28px 18px 34px;
+  }
   .hero__image { flex: none; }
   .hero__image-circle { width: 180px; height: 180px; font-size: 5.5rem; }
   .hero__title { font-size: 2.1rem; }

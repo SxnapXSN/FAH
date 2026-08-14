@@ -1,13 +1,16 @@
 .promo__box {
-  background: var(--color-promo-bg);
-  border: 1.5px dashed var(--color-accent);
+  background:
+    linear-gradient(100deg, var(--color-promo-bg), rgba(255, 255, 255, 0.88)),
+    linear-gradient(90deg, rgba(217, 107, 130, 0.12), rgba(141, 191, 159, 0.12));
+  border: 1px solid rgba(139, 105, 20, 0.16);
   border-radius: var(--radius-card);
-  padding: 24px 32px;
+  padding: 28px clamp(20px, 4vw, 48px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
 }
 
 .promo__info {
@@ -39,3 +42,8 @@
 }
 
 .promo__cta:hover { background: var(--color-primary); }
+
+@media (max-width: 767px) {
+  .promo__box { justify-content: center; text-align: center; }
+  .promo__info { flex-direction: column; }
+}

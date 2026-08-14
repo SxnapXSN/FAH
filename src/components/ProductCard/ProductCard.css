@@ -1,10 +1,11 @@
 .product-card {
   flex: 0 0 auto;
-  width: 210px;
+  width: clamp(218px, 16vw, 260px);
   background: var(--color-surface);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
+  border: 1px solid rgba(139, 105, 20, 0.12);
   transition: transform 0.25s, box-shadow 0.25s;
   scroll-snap-align: start;
 }
@@ -16,12 +17,15 @@
 
 .product-card__image {
   position: relative;
-  background: var(--color-bg-alt);
-  height: 140px;
+  background:
+    linear-gradient(135deg, rgba(255, 243, 214, 0.95), rgba(245, 237, 224, 0.95)),
+    radial-gradient(var(--color-accent) 1px, transparent 1px);
+  background-size: auto, 18px 18px;
+  height: clamp(148px, 11vw, 178px);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.5rem;
+  font-size: clamp(3.4rem, 4vw, 4.2rem);
 }
 
 .product-card__heart {
