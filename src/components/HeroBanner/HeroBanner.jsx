@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Threads from '../Threads/Threads';
 import './HeroBanner.css';
 
 const slides = [
@@ -41,6 +42,8 @@ const SLIDE_INTERVAL = 5000;
 const DRAG_LIMIT = 90; // px — max visual drag distance
 const DRAG_THRESHOLD = 45; // px — distance needed to trigger a slide change
 
+const hexToRgb = (hex) => hex.match(/\w\w/g).map((value) => parseInt(value, 16) / 255);
+
 export default function HeroBanner() {
   const [active, setActive] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
@@ -74,14 +77,21 @@ export default function HeroBanner() {
     setActive(index);
   };
 
-  const goNext = () => goTo((active + 1) % slides.length);
-  const goPrev = () => goTo((active - 1 + slides.length) % slides.length);
+  const goNext = () => {
+    stopAutoPlay();
+    setActive((current) => (current + 1) % slides.length);
+  };
+  const goPrev = () => {
+    stopAutoPlay();
+    setActive((current) => (current - 1 + slides.length) % slides.length);
+  };
 
   const scrollToMenu = () => {
     document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handlePointerDown = (e) => {
+    if (e.target.closest('button, a')) return;
     stopAutoPlay();
     dragState.current.startX = e.clientX;
     dragState.current.dragging = true;
@@ -115,6 +125,7 @@ export default function HeroBanner() {
 
   return (
     <section id="home" className="hero">
+      <Threads className="hero__threads" color={hexToRgb(slides[active].accent)} amplitude={0.78} distance={0.88} />
       <div
         className="hero__viewport"
         ref={viewportRef}
@@ -124,7 +135,7 @@ export default function HeroBanner() {
         onPointerLeave={endDrag}
         onPointerCancel={endDrag}
       >
-        <button className="hero__arrow hero__arrow--left" onClick={goPrev} aria-label="ก่อนหน้า">
+        <button className="hero__arrow hero__arrow--left" onPointerDown={(e) => e.stopPropagation()} onClick={goPrev} aria-label="ก่อนหน้า">
           <ChevronLeft size={26} />
         </button>
 
@@ -160,7 +171,7 @@ export default function HeroBanner() {
           ))}
         </div>
 
-        <button className="hero__arrow hero__arrow--right" onClick={goNext} aria-label="ถัดไป">
+        <button className="hero__arrow hero__arrow--right" onPointerDown={(e) => e.stopPropagation()} onClick={goNext} aria-label="ถัดไป">
           <ChevronRight size={26} />
         </button>
       </div>

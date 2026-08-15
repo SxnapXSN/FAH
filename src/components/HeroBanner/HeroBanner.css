@@ -12,6 +12,7 @@
 
 .hero__viewport {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   cursor: grab;
   touch-action: pan-y;
@@ -43,6 +44,16 @@
   box-shadow: var(--shadow-md);
   isolation: isolate;
   overflow: hidden;
+}
+
+.hero__threads {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.48;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transition: opacity 0.55s ease;
 }
 
 .hero__inner::before {
@@ -222,17 +233,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.25s ease, background 0.2s ease;
-  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
+  pointer-events: auto;
 }
 
 .hero__viewport:hover .hero__arrow {
   opacity: 1;
-  pointer-events: auto;
 }
 
-.hero__arrow:hover { background: rgba(255, 255, 255, 0.85); }
+.hero__arrow:hover { background: rgba(255, 255, 255, 0.9); transform: translateY(-50%) scale(1.06); }
 
 .hero__arrow--left { left: 16px; }
 .hero__arrow--right { right: 16px; }
@@ -294,6 +304,7 @@
   .hero__emoji,
   .hero__sparkle,
   .hero__price-tag,
+  .hero__threads,
   .hero__slide--active .hero__title,
   .hero__slide--active .hero__subtitle,
   .hero__slide--active .hero__cta {
