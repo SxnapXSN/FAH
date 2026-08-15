@@ -8,24 +8,32 @@ const slides = [
     title: 'อร่อยฟิน\nทุกโมเมนต์',
     subtitle: 'ชานมมุก & เบเกอรี่ ส่งถึงมือคุณ',
     price: 45,
+    accent: '#c4913a',
+    glow: 'rgba(196, 145, 58, 0.38)',
   },
   {
     emoji: '🍰',
     title: 'เบเกอรี่สด\nอบใหม่ทุกวัน',
     subtitle: 'หอมเนย นุ่มละมุน ทุกคำ',
     price: 65,
+    accent: '#d96b82',
+    glow: 'rgba(217, 107, 130, 0.34)',
   },
   {
     emoji: '☕',
     title: 'กาแฟเข้มข้น\nปลุกวันใหม่',
     subtitle: 'คั่วสดใหม่ พร้อมเสิร์ฟทุกเช้า',
     price: 55,
+    accent: '#8dbf9f',
+    glow: 'rgba(141, 191, 159, 0.42)',
   },
   {
     emoji: '🎁',
     title: 'เซ็ทสุดคุ้ม\nคุ้มกว่าที่คิด',
     subtitle: 'จับคู่ชานม & เบเกอรี่ ในราคาพิเศษ',
     price: 79,
+    accent: '#9a7bce',
+    glow: 'rgba(154, 123, 206, 0.32)',
   },
 ];
 
@@ -122,11 +130,19 @@ export default function HeroBanner() {
 
         <div className="hero__track" style={trackStyle}>
           {slides.map((slide, i) => (
-            <div className="hero__slide" key={i}>
+            <div
+              className={`hero__slide ${i === active ? 'hero__slide--active' : ''}`}
+              key={i}
+              style={{ '--slide-accent': slide.accent, '--slide-glow': slide.glow }}
+              aria-hidden={i !== active}
+            >
               <div className="container hero__inner">
                 <div className="hero__image">
                   <div className="hero__image-circle">
-                    <span>{slide.emoji}</span>
+                    <span className="hero__sparkle hero__sparkle--one" aria-hidden="true" />
+                    <span className="hero__sparkle hero__sparkle--two" aria-hidden="true" />
+                    <span className="hero__sparkle hero__sparkle--three" aria-hidden="true" />
+                    <span className="hero__emoji" aria-hidden="true">{slide.emoji}</span>
                     <span className="hero__price-tag">เริ่มต้น ฿{slide.price}</span>
                   </div>
                 </div>

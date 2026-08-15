@@ -1,4 +1,5 @@
 .promo__box {
+  position: relative;
   background:
     linear-gradient(100deg, var(--color-promo-bg), rgba(255, 255, 255, 0.88)),
     linear-gradient(90deg, rgba(217, 107, 130, 0.12), rgba(141, 191, 159, 0.12));
@@ -11,6 +12,21 @@
   gap: 20px;
   flex-wrap: wrap;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.promo__box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(108deg, transparent 38%, rgba(255, 255, 255, 0.64) 50%, transparent 62%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.promo__box:hover::after {
+  transform: translateX(120%);
+  transition: transform 0.85s ease;
 }
 
 .promo__info {
@@ -42,6 +58,16 @@
 }
 
 .promo__cta:hover { background: var(--color-primary); }
+
+.promo__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo__box::after { display: none; }
+  .promo__cta:hover { transform: none; }
+}
 
 @media (max-width: 767px) {
   .promo__box { justify-content: center; text-align: center; }
